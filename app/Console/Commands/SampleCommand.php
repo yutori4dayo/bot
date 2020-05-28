@@ -58,7 +58,6 @@ class SampleCommand extends Command
                 PHP_EOL.
                 $data->contents
           ]);
-          dd($connection);
         }
       }
     }
