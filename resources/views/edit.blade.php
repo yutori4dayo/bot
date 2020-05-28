@@ -1,3 +1,6 @@
+@guest
+@endguest
+@auth
 <div class="container p-5">
   <form class="" action="/editPost" method="post">
     @csrf
@@ -6,3 +9,4 @@
     <input type="submit" class="btn btn-primary" value="送信">
   </form>
 </div>
+@endauth

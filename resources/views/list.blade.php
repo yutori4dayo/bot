@@ -11,6 +11,9 @@
     <title>
     </title>
   </head>
+  @guest
+  @endguest
+  @auth
 <body>
   @if (session('deleteerror'))
     <p class="text-danger mt-3">
@@ -40,6 +43,7 @@
           <td>{{$post->contents}}</td>
           <td>
             <form action="{{action( 'PostController@edit')}}">
+              @csrf
               <input type="hidden" name="id" value="{{$post->id}}">
               <input type="submit" class="btn btn-success" value="編集">
             </form>
@@ -56,3 +60,4 @@
     {{ $posts->links() }}
   </div>
 </body>
+@endauth

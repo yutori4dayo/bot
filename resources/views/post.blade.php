@@ -11,6 +11,9 @@
     <title>
     </title>
   </head>
+  @guest
+  @endguest
+  @auth
   @if (session('error'))
     <p class="text-danger mt-3">
       {{ session('error') }}
@@ -29,3 +32,4 @@
     <input type="submit" class="btn btn-primary" value="送信">
   </form>
 </div>
+@endauth

@@ -25,3 +25,7 @@ Route::post('/getPost', 'PostController@getPost');
 Route::get('/list', 'PostController@postList');
 Route::post('/delete', 'PostController@delete');
 Route::post('/editPost', 'PostController@editPost');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
