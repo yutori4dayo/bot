@@ -22,7 +22,7 @@ class SampleCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'post to twitter';
 
     /**
      * Create a new command instance.
@@ -53,7 +53,7 @@ class SampleCommand extends Command
           $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('COMSUMER_CEACRET_KEY'), env('ACCESS_TOKEN'), env('ACCESS_TOKEN_CEACRET'));
           $connection->post("statuses/update", [
               "status" =>
-                '今の時刻は'.$time.'だが時を戻そう..。'.PHP_EOL.
+                '時刻は'.$time.'だが時を戻そう..。'.PHP_EOL.
                 PHP_EOL.
                 PHP_EOL.
                 $data->contents
