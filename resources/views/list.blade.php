@@ -14,6 +14,34 @@
   @guest
   @endguest
   @auth
+  <style media="screen">
+    th{
+      border-bottom: 1px solid #555;
+      text-align: center;
+      padding-bottom: 3px;
+    }
+    th{
+      border: 1px solid #ddd;
+    }
+    td{
+      border: 1px solid #ddd;
+    }
+    .center{
+      text-align: center;
+    }
+    form{
+      margin-bottom: 0;
+    }
+    .btn{
+      margin: 5px;
+    }
+    .blah > p{
+      padding: 0 5px;
+    }
+    p{
+      margin-bottom: 0;
+    }
+  </style>
 <body>
   @if (session('deleteerror'))
     <p class="text-danger mt-3">
@@ -26,7 +54,7 @@
     </p>
   @endif
   <div class="container">
-    <a href="/post">投稿</a>
+    <button type="button" class="btn btn-success"><a href="/post" class="text-white">投稿</a></button>
     <table>
       <thead>
         <tr>
@@ -39,8 +67,8 @@
       @foreach($posts as $post)
       <tbody>
         <tr>
-          <td>{{$post->id}}</td>
-          <td>{{$post->contents}}</td>
+          <td class="center">{{$post->id}}</td>
+          <td class="blah"><p>{{$post->contents}}</p></td>
           <td>
             <form action="{{action( 'PostController@edit')}}">
               @csrf
