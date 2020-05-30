@@ -14,6 +14,7 @@
   @guest
   @endguest
   @auth
+<div class="container p-5">
   @if (session('error'))
     <p class="text-danger mt-3">
       {{ session('error') }}
@@ -24,8 +25,7 @@
       {{ session('ok') }}
     </p>
   @endif
-  <a href="/list">一覧</a>
-<div class="container p-5">
+  <button type="button" class="btn btn-primary mb-5"><a href="/list" class="text-white">一覧</a></button>
   <form class="" action="/getPost" method="post">
     @csrf
     <textarea name="post" id="" cols="100" rows="10"></textarea>

@@ -41,6 +41,15 @@ class SampleCommand extends Command
      */
     public function handle()
     {
+      $nowTime = Carbon::now()->format('H:i');
+      if($nowTime === "19:00"){
+        $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('COMSUMER_CEACRET_KEY'), env('ACCESS_TOKEN'), env('ACCESS_TOKEN_CEACRET'));
+        $gets = $connection->get("search/tweets",["q" => "ぺこぱ",'count'=>20,"result_type"=>"recent","include_entities"=>false]);
+          for ($i=0; $i <20 ; $i++) {
+            $connection->post("favorites/create",["id" => $gets->statuses[$i]->id]);
+          }
+      }
+      
       $count = Post::all()->count();
       $randomId = mt_rand(1,$count);
       $data = Post::find($randomId);
