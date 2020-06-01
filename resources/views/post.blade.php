@@ -25,8 +25,8 @@
       {{ session('ok') }}
     </p>
   @endif
-  <button type="button" class="btn btn-primary mb-5"><a href="/list" class="text-white">一覧</a></button>
-  <form class="" action="/getPost" method="post">
+  <button type="button" class="btn btn-primary mb-5"><a href="{{asset('/list')}}" class="text-white">一覧</a></button>
+  <form class="" action="{{action('PostController@getPost')}}" method="post">
     @csrf
     <textarea name="post" id="" cols="100" rows="10"></textarea>
     <input type="submit" class="btn btn-primary" value="送信">

@@ -54,7 +54,7 @@
     </p>
   @endif
   <div class="container">
-    <button type="button" class="btn btn-success"><a href="/post" class="text-white">投稿</a></button>
+    <button type="button" class="btn btn-success"><a href="{{asset('/post')}}" class="text-white">投稿</a></button>
     <table>
       <thead>
         <tr>

@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\SampleCommand::class
+        Commands\SampleCommand::class,
+        Commands\prejectCommand::class
     ];
 
     /**
@@ -25,6 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('command:name')->everyThirtyMinutes();
+        $schedule->command('command:favorites')->dailyAt('13:40');
     }
 
     /**

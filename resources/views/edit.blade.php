@@ -14,7 +14,7 @@
   </title>
 </head>
 <div class="container p-5">
-  <form class="" action="/editPost" method="post">
+  <form class="" action="{{action('PostController@editPost')}}" method="post">
     @csrf
     <textarea name="post" id="post" cols="100" rows="10">{{$post->contents}}</textarea>
     <input type="hidden" name="id" value="{{$post->id}}">
