@@ -42,8 +42,8 @@ class prejectCommand extends Command
     public function handle()
     {
         $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('COMSUMER_CEACRET_KEY'), env('ACCESS_TOKEN'), env('ACCESS_TOKEN_CEACRET'));
-        $gets = $connection->get("search/tweets",["q" => "ぺこぱ",'count'=>2,"result_type"=>"recent","include_entities"=>false]);
-          for ($i=0; $i<2; $i++) {
+        $gets = $connection->get("search/tweets",["q" => "ぺこぱ",'count'=>30,"result_type"=>"recent","include_entities"=>false]);
+          for ($i=0; $i<30; $i++) {
             $connection->post("favorites/create",["id" => $gets->statuses[$i]->id]);
           }
     }

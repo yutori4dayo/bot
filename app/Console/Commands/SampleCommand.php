@@ -53,10 +53,11 @@ class SampleCommand extends Command
           $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('COMSUMER_CEACRET_KEY'), env('ACCESS_TOKEN'), env('ACCESS_TOKEN_CEACRET'));
           $connection->post("statuses/update", [
               "status" =>
-                '時刻は'.$time.'だが時を戻そう..。'.PHP_EOL.
-                PHP_EOL.
-                PHP_EOL.
-                $data->contents
+                // '時刻は'.$time.'だが時を戻そう..。'.PHP_EOL.
+                // PHP_EOL.
+                // PHP_EOL.
+                $data->contents.PHP_EOL.
+                '#ぺこぱ　#シュウペイ　#松蔭寺太勇'
           ]);
         }
       }
