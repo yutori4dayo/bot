@@ -17,6 +17,8 @@ class Kernel extends ConsoleKernel
         Commands\prejectCommand::class,
         Commands\GetTrends::class,
         Commands\GetFriend::class,
+        Commands\GetScraping::class,
+        Commands\PostScraping::class,
     ];
 
     /**
@@ -27,8 +29,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-      //  $schedule->command('command:name')->everyThirtyMinutes();
-      //  $schedule->command('command:favorites')->twiceDaily(12, 21);
+       // $schedule->command('command:name')->everyThirtyMinutes();
+       // $schedule->command('command:favorites')->twiceDaily(12, 21);
+       $schedule->command('get:friend')->dailyAt('19:00');
+       $schedule->command('get:aa')->twiceDaily(15,21);
+       $schedule->command('post:Scraping')->between('7:00','23:00')->hourlyAt(17);
     }
 
     /**
