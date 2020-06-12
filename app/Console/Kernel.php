@@ -14,7 +14,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\SampleCommand::class,
-        Commands\prejectCommand::class
+        Commands\prejectCommand::class,
+        Commands\GetTrends::class,
+        Commands\GetFriend::class,
     ];
 
     /**
@@ -25,8 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:name')->everyThirtyMinutes();
-        $schedule->command('command:favorites')->twiceDaily(12, 21);
+      //  $schedule->command('command:name')->everyThirtyMinutes();
+      //  $schedule->command('command:favorites')->twiceDaily(12, 21);
     }
 
     /**

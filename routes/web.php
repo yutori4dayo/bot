@@ -26,6 +26,13 @@ Route::get('/list', 'PostController@postList');
 Route::post('/delete', 'PostController@delete');
 Route::post('/editPost', 'PostController@editPost');
 
+Route::get('/itemslist', 'PostController@listItem');
+Route::get('/postitems', function(){
+  return view('postitems');
+});
+
+Route::post('/createitem', 'PostController@CreateItem');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

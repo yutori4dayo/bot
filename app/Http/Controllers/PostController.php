@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Scraping;
 
 class PostController extends Controller
 {
@@ -49,5 +50,18 @@ class PostController extends Controller
       $get->contents = $request->post;
       $get->save();
         return redirect('list');
+    }
+
+    public function listItem(){
+        $items = Scraping::all();
+        return view('itemslist',compact('items'));
+    }
+
+    public function CreateItem(Request $request){
+      $data = new Scraping();
+      $data->content =  $request->content;
+      $data->title = 'a';
+      $data->save();
+      return redirect('itemslist');
     }
 }

@@ -15,7 +15,7 @@ class SampleCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'post:post';
 
     /**
      * The console command description.
@@ -48,16 +48,24 @@ class SampleCommand extends Command
       if($latestPostId->posts_id !== $data->id){
         $saveLog = new PostLog();
         $saveLog->posts_id = $data->id;
-        $time = Carbon::now()->format('H時i分');
         if($saveLog->save()){
           $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('COMSUMER_CEACRET_KEY'), env('ACCESS_TOKEN'), env('ACCESS_TOKEN_CEACRET'));
           $connection->post("statuses/update", [
               "status" =>
-                // '時刻は'.$time.'だが時を戻そう..。'.PHP_EOL.
-                // PHP_EOL.
-                // PHP_EOL.
-                $data->contents.PHP_EOL.
-                '#ぺこぱ　#シュウペイ　#松蔭寺太勇'
+                $data->contents
+          ]);
+        }
+      }else {
+        $count = Post::all()->count();
+        $randomId = mt_rand(1,$count);
+        $data = Post::find($randomId);
+        $saveLog = new PostLog();
+        $saveLog->posts_id = $data->id;
+        if($saveLog->save()){
+          $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('COMSUMER_CEACRET_KEY'), env('ACCESS_TOKEN'), env('ACCESS_TOKEN_CEACRET'));
+          $connection->post("statuses/update", [
+              "status" =>
+                $data->contents
           ]);
         }
       }
