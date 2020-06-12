@@ -43,7 +43,7 @@ class PostScraping extends Command
         $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('COMSUMER_CEACRET_KEY'), env('ACCESS_TOKEN'), env('ACCESS_TOKEN_CEACRET'));
         $result = $connection->post("statuses/update", [
             "status" =>
-            $data->content
+            $data->title
         ]);
 
         if(!empty($result->errors[0]->code) && $result->errors[0]->code === 186){

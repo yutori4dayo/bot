@@ -36,3 +36,5 @@ Route::post('/createitem', 'PostController@CreateItem');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/image', 'ImageController@ImageList');
