@@ -46,8 +46,8 @@ class PostScraping extends Command
             $data->title
         ]);
 
-        if(!empty($result->errors[0]->code) && $result->errors[0]->code === 186){
-          Scraping::where('title',$data->title)->delete();
+        if(empty($result->errors[0]->code)){
+          Scraping::where('id',$data->id)->update(['post_flg'=>1]);
         }
     }
 }
