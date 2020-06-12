@@ -39,7 +39,9 @@ class PostScraping extends Command
      */
     public function handle()
     {
-        $data = Scraping::inRandomOrder()->first();
+
+        $id = Scraping::where('post_flg',0)->pluck('id')->first();
+        $data = Scraping::find($id);
         $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('COMSUMER_CEACRET_KEY'), env('ACCESS_TOKEN'), env('ACCESS_TOKEN_CEACRET'));
         $result = $connection->post("statuses/update", [
             "status" =>
