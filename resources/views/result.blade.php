@@ -20,6 +20,9 @@
         max-width: 300px;
         overflow-wrap: break-word;
       }
+      .blah > a{
+        font-size: 8px;
+      }
     </style>
     <div class="container m-5 pl-5">
       <form class="" action="{{url('/getRakuten')}}" method="post">
