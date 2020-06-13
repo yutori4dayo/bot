@@ -39,3 +39,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/image', 'ImageController@ImageList');
 Route::post('/getImage', 'ImageController@getImage');
+
+Route::get('/rakutensarch', function () {
+    return view('rakutensarch');
+});
+
+Route::post('/getRakuten', 'RakutenController@getRakuten');

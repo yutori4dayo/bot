@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeColumnImgToScrapingssTable extends Migration
+class CreateRakutensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class ChangeColumnImgToScrapingssTable extends Migration
      */
     public function up()
     {
-        Schema::table('scrapings', function (Blueprint $table) {
-            $table->string('img')->nullable()->change();
+        Schema::create('rakutens', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->text('image');
+            $table->text('url');
+            $table->integer('price');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class ChangeColumnImgToScrapingssTable extends Migration
      */
     public function down()
     {
-        Schema::table('scrapings', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('rakutens');
     }
 }
