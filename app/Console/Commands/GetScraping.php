@@ -41,7 +41,7 @@ class GetScraping extends Command
     public function handle()
     {
       for ($i=0; $i <20; $i++) {
-        sleep(3);
+        sleep(1);
         $html = file_get_contents('https://www.keyakizaka46.com/s/k46o/diary/member/list?ima=0000');
         $get = phpQuery::newDocument($html);
 
@@ -54,7 +54,8 @@ class GetScraping extends Command
 
         $img = $get->find('article:eq('.$i.')')->find('.box-article')->find('img')->attr('src');
         $datas = Scraping::where('content',$img)->where('flg',1)->get();
-        if(empty($datas)){
+
+        if($datas->isEmpty()){
           $names = new Scraping();
           $names->title = $title;
           $names->content = $img;
@@ -65,7 +66,7 @@ class GetScraping extends Command
       }
 
         for ($i=0; $i <20; $i++) {
-          sleep(3);
+          sleep(1);
           $html = file_get_contents('https://www.hinatazaka46.com/s/official/diary/member/list?ima=0000');
           $get = phpQuery::newDocument($html);
 
@@ -77,8 +78,10 @@ class GetScraping extends Command
           $dateed = str_replace(".", '', $datee);
 
           $img = $get->find('.p-blog-article:eq('.$i.')')->find('.c-blog-article__text')->find('img')->attr('src');
+
           $datas = Scraping::where('content',$img)->where('flg',2)->get();
-          if(empty($datas)){
+
+          if($datas->isEmpty()){
             $names = new Scraping();
             $names->title = $title;
             $names->content = $img;
