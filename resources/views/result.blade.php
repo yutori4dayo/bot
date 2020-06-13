@@ -17,7 +17,7 @@
         width: 200px;
       }
       .blah{
-        max-width: 300px;
+        max-width: 200px;
         overflow-wrap: break-word;
       }
       .blah > a{
