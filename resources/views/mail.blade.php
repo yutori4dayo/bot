@@ -36,5 +36,6 @@
         <br>
         @endforeach
         <a href="https://affiliate.rakuten.co.jp/">楽天アフィリエイト</a>
+        <a href="http://project1.yosiakiando.work/bot/public/rakutensarch">楽天検索</a>
     </body>
 </html>
