@@ -16,6 +16,10 @@
       .content{
         width: 200px;
       }
+      .blah{
+        max-width: 300px;
+        overflow-wrap: break-word;
+      }
     </style>
     <div class="container m-5 pl-5">
       <form class="" action="{{url('/getRakuten')}}" method="post">
@@ -41,7 +45,11 @@
       <div class="content">
         <img src="{{$data->image}}" alt="">
       </div>
-      <input  type="text" value="{{$data->url}}" readonly>
+      <!-- <input  type="text" value="{{$data->url}}" readonly> -->
+      <div class="blah">
+
+        <a href="{{$data->url}}">{{$data->url}}</a>
+      </div>
       <!-- <div class="content">
         {{$data->price}}円
       </div> -->
