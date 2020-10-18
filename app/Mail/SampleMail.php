@@ -31,7 +31,7 @@ class SampleMail extends Mailable
     {
       return $this->view('mail')
                   ->from('admin@aoriunten.net')
-                  ->subject('ツイッタートレンド')
+                  ->subject('坂道新規保存データ')
                   ->with([
                       'datas' => $this->datas,
                     ]);

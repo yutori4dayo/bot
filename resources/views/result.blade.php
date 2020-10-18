@@ -14,7 +14,7 @@
   <body>
     <style type="text/css">
       .content{
-        width: 200px;
+        width: 150px;
       }
       .blah{
         max-width: 200px;
@@ -24,7 +24,7 @@
         font-size: 8px;
       }
     </style>
-    <div class="container m-5 pl-5">
+    <div class="container m-2 pl-2">
       <form class="" action="{{url('/getRakuten')}}" method="post">
         @csrf
         <input type="text" name="text" value="">

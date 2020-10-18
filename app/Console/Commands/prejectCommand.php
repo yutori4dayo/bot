@@ -7,6 +7,8 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Post;
 use App\PostLog;
 use Carbon\Carbon;
+use Intervention\Image\ImageManagerStatic as Images;
+use App\Usomatu;
 
 class prejectCommand extends Command
 {
@@ -15,7 +17,7 @@ class prejectCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:favorites';
+    protected $signature = 'get:get';
 
     /**
      * The console command description.
@@ -41,10 +43,33 @@ class prejectCommand extends Command
      */
     public function handle()
     {
+      $count = 200;
         $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('COMSUMER_CEACRET_KEY'), env('ACCESS_TOKEN'), env('ACCESS_TOKEN_CEACRET'));
-        $gets = $connection->get("search/tweets",["q" => "ぺこぱ",'count'=>30,"result_type"=>"recent","include_entities"=>false]);
-          for ($i=0; $i<30; $i++) {
-            $connection->post("favorites/create",["id" => $gets->statuses[$i]->id]);
+        $gets = $connection->get("statuses/user_timeline",["screen_name" => "kyogen_fujoshi",'count'=>$count,"exclude_replies"=>"false"]);
+         for ($i=0; $i <$count; $i++) {
+          if(!empty($gets[$i]->extended_entities->media[0])){
+            $data[] = $gets[$i]->extended_entities->media[0]->media_url_https;
+            if(isset($gets[$i]->extended_entities->media[1])){
+              $data[] = $gets[$i]->extended_entities->media[1]->media_url_https;
+              if(isset($gets[$i]->extended_entities->media[2])){
+                $data[] = $gets[$i]->extended_entities->media[2]->media_url_https;
+                if(isset($gets[$i]->extended_entities->media[3])){
+                  $data[] = $gets[$i]->extended_entities->media[3]->media_url_https;
+                }
+              }
+            }
           }
+         }
+         foreach ($data as $key => $data) {
+           $result = Images::make($data);
+           $uniq = uniqid("img_").'.jpg';
+           $save_path = public_path('uso/'.$uniq);
+           $result->save($save_path);
+           $paths = $uniq;
+           $datas = new Usomatu();
+           $datas->url = $paths;
+           $datas->save();
+           $this->info($key);
+         }
     }
 }

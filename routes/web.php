@@ -38,6 +38,17 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/image', 'ImageController@ImageList');
+Route::get('/imageK', 'ImageController@ImageListKeyaki');
+Route::get('/imageH', 'ImageController@ImageListHinata');
+
+Route::post('/date', 'ImageController@date');
+Route::post('/dateh', 'ImageController@dateh');
+Route::post('/datek', 'ImageController@datek');
+
+Route::match(['get', 'post'],'/serach', 'ImageController@serach');
+Route::match(['get', 'post'],'/serach2', 'ImageController@serach2');
+
+
 Route::post('/getImage', 'ImageController@getImage');
 
 Route::get('/rakutensarch', function () {
